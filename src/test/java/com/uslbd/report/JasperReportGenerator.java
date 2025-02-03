@@ -11,8 +11,8 @@ public class JasperReportGenerator {
     public static void main(String[] args) {
         try {
             // Define report path
-            String jrxmlPath = "reportformat/Blank_A4.jrxml";
-            String pdfOutputPath = "Blank_A4_Report.pdf";
+            String jrxmlPath = "report_format/SEBL_A4.jrxml";
+            String pdfOutputPath = "report_generated/SEBL_A4_Report.pdf";
 
             // Compile JRXML to Jasper file
             JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlPath);
