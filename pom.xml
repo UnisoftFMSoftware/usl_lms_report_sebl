@@ -77,6 +77,12 @@
 			<version>7.0.1</version>  <!-- Match your JasperReports version -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+
 
 		<!-- iText for PDF Generation -->
 		<dependency>

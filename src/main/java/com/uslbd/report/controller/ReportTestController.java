@@ -1,4 +1,4 @@
-package com.uslbd.report;
+package com.uslbd.report.controller;
 
 import net.sf.jasperreports.engine.*;
 import org.springframework.core.io.Resource;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/report")
-public class ReportController {
+public class ReportTestController {
 
     private static final String REPORT_PATH = "report_format/SEBL_A4.jrxml";
     private static final String OUTPUT_FILE = "report_generated/SEBL_A4_Report.pdf";

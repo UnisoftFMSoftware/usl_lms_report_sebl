@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .pdf-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        Loan Report - <span th:text="${branchName}"></span>
+    </div>
+
+    <div class="content">
+        <p><strong>Loan ID:</strong> <span th:text="${loanId}"></span></p>
+        <p><strong>Report Type:</strong> <span th:text="${reportType}"></span></p>
+        <p><strong>Main Account Name:</strong> <span th:text="${mainAccountName}"></span></p>
+    </div>
+
+    <div class="content">
+        <h3>Report Content:</h3>
+        <div th:utext="${reportInHtml}"></div>
+    </div>
+
+    <div class="col-sm-12  " id="btn-dl">
+        <button class="btn-info btn-flat" id="generate-pdf">
+            <a th:href="@{/gateway/html/report/download-report(file_path=${pdf_file_path}, file_name=${mainAccountName + '_' + branchName})}"
+               rel="noopener noreferrer" target="_blank"
+            >
+                Download Report
+            </a>
+
+        </button>
+    </div>
+
+    <div class="pdf-link">
+        <a th:href="@{${pdfFilePath}}" target="_blank">Download PDF Report</a>
+    </div>
+
+    <div id="report-branch-proposal">
+        <h1>Branch Proposal PDF</h1>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var reportInHtml = /*[[${reportInHtml}]]*/ {};
+    /*]]>*/
+</script>
+
+<script th:inline="javascript">
+    // console.log(noticeInHTML);
+    document.addEventListener("DOMContentLoaded", function () {
+        var branchReport = document.getElementById("report-branch-proposal");
+        if (branchReport) {
+            branchReport.innerHTML = reportInHtml;
+        }
+    });
+</script>
+
+</body>
+</html>
